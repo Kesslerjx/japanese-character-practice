@@ -5,8 +5,9 @@ const SEARCH_URL = `https://api.pexels.com/v1/search/?query=${SEARCH_TERM}&orien
 
 //Sets the windows background image
 function setBackground(image) {
+    console.log(image);
     const body = document.querySelector('body');
-    body.style.backgroundImage = `url(${image.src.original})`;
+    body.style.backgroundImage = `url(${image.src.large2x})`; //Use large2x to increase load size
 }
 
 //Loads a random image from Pexels
