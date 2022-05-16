@@ -1,0 +1,40 @@
+:root {
+    --cherry-blossom-pink: #FFB7C5;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body > a {
+    color: var(--cherry-blossom-pink);
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+
+body > a:visited {
+    color: var(--cherry-blossom-pink);
+}
+
+main {
+    max-width: 700px;
+    min-width: 350px;
+    width: 100%;
+    margin-left: 40px;
+    margin-right: 40px;
+    background-color: rgb(52 52 52 / 0.9);
+    filter: drop-shadow(1px 2px 4px rgba(0, 0, 0, 0.689)); /* https://www.joshwcomeau.com/css/designing-shadows/ */
+    border-radius: 20px;
+}
