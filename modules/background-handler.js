@@ -8,6 +8,13 @@ function setBackground(image) {
     console.log(image);
     const body = document.querySelector('body');
     body.style.backgroundImage = `url(${image.src.large2x})`; //Use large2x to increase load size
+    creditImage(image.photographer, image.photographer_url);
+}
+
+function creditImage(artist, url) {
+    const element = document.querySelector('#photo-credit');
+    element.href = url;
+    element.textContent = `@${artist} on Pexels`;
 }
 
 //Loads a random image from Pexels
