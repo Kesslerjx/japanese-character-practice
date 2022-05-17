@@ -37,4 +37,47 @@ main {
     background-color: rgb(52 52 52 / 0.9);
     filter: drop-shadow(1px 2px 4px rgba(0, 0, 0, 0.689)); /* https://www.joshwcomeau.com/css/designing-shadows/ */
     border-radius: 20px;
+    padding: 20px;
+}
+
+.home-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-icon {
+    /* https://codepen.io/sosuke/pen/Pjoqqp?__cf_chl_jschl_tk__=ecc0b72797ae71bc009d6322e3e470773936b386-1604211766-0-ASpz720gXnc6Ej0vzlgY9-KLmlPkldgcOx1wAmGTUCjLZLOxkArNxpRzZ9m8woL-NGmP9LBGVPws8UxMJZrR7O1qFH6QkKtrGVPw6StRnXiK1XTQR_nY905r0XobAG2nOmyC6Zq8mdyPDp1MyHD7JLodJUXCRViXhtmLmRVE_-JGarVJRlxs6k3DzAOQQEJewfp00DjhlD0mxr8ZKpk2yq6IPTZZQ52XYxh26FC5MxLHhs7LuAwhtolmDZyp4_IuwRg8I5m-2--MmvGE8CCqjRWrkE85zgkMXPlOqcZtppRpZhn6Uz9DZAuKheHwVBb0ySIhFYG92bvQOgiKX0TTswB1SHgOLIeqktuyUaAgxI_h */
+    filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(357deg) brightness(108%) contrast(101%);
+    width: 40px;
+    margin-left: auto;
+}
+
+.stat-div, .character {
+    color: white;
+    text-align: center;
+}
+
+.character {
+    font-size: clamp(6rem, 25vw, 13rem);
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.buttons-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.normal-button {
+    width: 75%;
+    padding: 10px 0;
+    border-style: none;
+    background-color: var(--cherry-blossom-pink);
+    font-size: 1.3rem;
+    letter-spacing: 0.1rem;
+    border-radius: 10px;
+}
+
+.normal-button:hover {
+    font-weight: bold;
 }
