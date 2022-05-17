@@ -16,3 +16,5 @@ class Character {
         return (this.correctCount / this.shownCount) * 100;
     }
 }
+
+export {CHARACTER_SET, Character};
