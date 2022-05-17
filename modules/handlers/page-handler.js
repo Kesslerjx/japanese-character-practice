@@ -1,4 +1,4 @@
-import {buildHomePage} from './home-page.js';
+import {buildHomePage} from '../pages/home-page.js';
 
 const PAGE_STATE = {
     HOME: 'home',
