@@ -15,8 +15,6 @@ function loadData() {
     } else {
         stack = JSON.parse(localStorage.getItem(STORAGE_KEY.STACK));
     }
-
-    console.log(stack);
 }
 
 //Function to save the stack to the local storage

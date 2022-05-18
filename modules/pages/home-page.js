@@ -1,5 +1,5 @@
 import { stack } from "../handlers/storage-handler.js";
-import { missedAnswer } from "../handlers/stack-handler.js";
+import { getPercentage, missedAnswer, correctAnswer } from "../handlers/stack-handler.js";
 
 const SETTINGS_ICON = '../icons/settings.svg';
 
@@ -31,8 +31,7 @@ function buildHomePage() {
     correctButton.classList.add('normal-button', 'smaller-button');
 
     settingsBtn.src = SETTINGS_ICON;
-    statP.textContent = "100 / 200";
-    showCharacter();
+    statP.textContent = getPercentage(stack.lastIndex);
     showButton.textContent = 'Show';
     missButton.textContent = 'Missed';
     correctButton.textContent = 'Correct';
@@ -45,6 +44,8 @@ function buildHomePage() {
     buttonsDiv.append(showButton);
     div.append(settingsBtn, statDiv, character, buttonsDiv);
     main.append(div);
+
+    showCharacter();
 }
 
 function showCharacter() {
@@ -64,14 +65,17 @@ function showAnswer() {
 }
 
 function missPressed() {
-    missedAnswer();
-    showCharacter();
-    clearButtonsDiv();
-    buttonsDiv.append(showButton);
+    missedAnswer(); //Modify the stack to reflect an incorrect answer
+    showCharacter(); //Shows the next character
+    clearButtonsDiv(); //Removes the buttons from the div
+    buttonsDiv.append(showButton); //Adds the show button back
 }
 
 function correctPressed() {
-
+    correctAnswer(); //Modify the stack to reflect an incorrect answer
+    showCharacter(); //Shows the next character
+    clearButtonsDiv(); //Removes the buttons from the div
+    buttonsDiv.append(showButton); //Adds the show button back
 }
 
 //Removes the show button from the buttons div

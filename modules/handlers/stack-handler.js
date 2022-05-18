@@ -14,20 +14,43 @@ function missedAnswer() {
         increaseShownCount(stack.lastIndex);
     }
 
-    //Move character to shown array to move it out of the current stack
-    stack.shownCharacters.push(stack[stack.lastIndex]);
+    moveCurrentCharacter();
+    setIndex();
+    saveData();
+}
 
-    //Remove character from current stack
-    stack.characters.splice(stack.lastIndex, 1);
+function correctAnswer() {
+    //Increase counts
+    increaseCorrectCount(stack.lastIndex);
+    increaseShownCount(stack.lastIndex);
+    moveCurrentCharacter();
+    setIndex();
+    saveData();
+}
 
+function moveCurrentCharacter() {
+   //Move character to shown array to move it out of the current stack
+   stack.shownCharacters.push(stack[stack.lastIndex]);
+
+   //Remove character from current stack
+   stack.characters.splice(stack.lastIndex, 1);
+}
+
+function setIndex() {
     //Get next index
     if(stack.options.random) {
         stack.lastIndex = randomNumber(stack.characters.length);
     } else {
         stack.lastIndex = 0;
     }
+}
 
-    saveData();
+function getPercentage(index) {
+    if(stack.characters[index].shownCount == 0 || stack.characters[index].correctCount == 0) {
+        return '0%';
+    } else {
+        return `${(stack.characters[index].shownCount / stack.characters[index].correctCount) * 100}%`;
+    }
 }
 
 function getCorrectCount(index) {
@@ -46,4 +69,4 @@ function increaseShownCount(index) {
     stack.characters[index].shownCount += 1;
 }
 
-export {missedAnswer};
+export {missedAnswer, correctAnswer, getPercentage};

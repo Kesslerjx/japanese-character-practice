@@ -1,4 +1,5 @@
-import {buildHomePage} from '../pages/home-page.js';
+import { buildHomePage } from '../pages/home-page.js';
+import { buildSettingsPage } from '../pages/settings-page.js';
 
 const PAGE_STATE = {
     HOME: 'home',
@@ -10,7 +11,7 @@ function changePage(state) {
     
     switch(state) {
         case PAGE_STATE.SETTINGS:
-            console.log('Load settings page');
+            buildSettingsPage();
             break;
         default:
             buildHomePage();
