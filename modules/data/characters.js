@@ -1,4 +1,4 @@
-import { CHARACTER_SET, Character } from "../models/character";
+import { CHARACTER_SET, Character } from "../models/character.js";
 
 //All of the characters required for the application
 //Will be used to populate the local storage when the data is loaded for the first time
