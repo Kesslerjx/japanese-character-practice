@@ -50,6 +50,14 @@ function backPressed() {
     changePage(PAGE_STATE.HOME);
 }
 
+function hiraganaPressed() {
+
+    //Handle stack modification
+
+    //Hightlight or unhighlight button
+    highlightButtons();
+}
+
 //Makes the buttons highlighted if that option is pressed
 function highlightButtons() {
     if(stack.options.random) {

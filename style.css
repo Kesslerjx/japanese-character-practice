@@ -16,15 +16,25 @@ body {
     align-items: center;
 }
 
-body > a {
-    color: var(--cherry-blossom-pink);
-    display: inline-block;
+body > div {
     position: absolute;
+    top: 10px;
     left: 20px;
-    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body > div > a {
+    color: var(--cherry-blossom-pink);
     text-decoration: none;
     font-weight: 600;
     letter-spacing: 0.1rem;
+}
+
+body > div > img {
+    filter: invert(100%) sepia(77%) saturate(5957%) hue-rotate(289deg) brightness(104%) contrast(100%);
 }
 
 body > a:visited {

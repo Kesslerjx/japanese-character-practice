@@ -6,6 +6,7 @@ const SETTINGS_ICON = '../icons/settings.svg';
 
 //Get main element
 const main = document.querySelector('main');
+const hideButton = document.querySelector('#hide-button');
 
 //Create elements
 const div = document.createElement('div');
@@ -41,6 +42,8 @@ function buildHomePage() {
     showButton.addEventListener('click', showAnswer);
     missButton.addEventListener('click', missPressed);
     correctButton.addEventListener('click', correctPressed);
+    hideButton.addEventListener('mouseover', hoverOnHide);
+    hideButton.addEventListener('mouseout', hoverOnHide);
 
     statDiv.append(statP);
     buttonsDiv.append(showButton);
@@ -82,6 +85,14 @@ function correctPressed() {
     showCharacter(); //Shows the next character
     clearButtonsDiv(); //Removes the buttons from the div
     buttonsDiv.append(showButton); //Adds the show button back
+}
+
+function hoverOnHide() {
+    if(main.style.opacity === '0') {
+        main.style.opacity = '1'
+    } else {
+        main.style.opacity = '0';
+    }
 }
 
 //Removes the show button from the buttons div

@@ -28,6 +28,27 @@ function correctAnswer() {
     saveData();
 }
 
+//Is called when the hiragana option button is pressed
+function hiraganaOption() {
+    if(stack.options.hiragana) {
+        stack.options.hiragana = false;
+
+        moveHiraganaCharacters();
+    } else {
+        stack.options.hiragana = true;
+
+        moveHiraganaCharacters();
+    }
+}
+
+function moveHiraganaCharacters() {
+    if(stack.options.hiragana) {
+        //Move back to main stack
+    } else {
+        //Move to hidden stack
+    }
+}
+
 function moveCurrentCharacter() {
    //Move character to shown array to move it out of the current stack
    stack.shownCharacters.push(stack[stack.lastIndex]);
