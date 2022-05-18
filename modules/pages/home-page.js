@@ -1,5 +1,6 @@
 import { stack } from "../handlers/storage-handler.js";
 import { getPercentage, missedAnswer, correctAnswer } from "../handlers/stack-handler.js";
+import { PAGE_STATE, changePage } from "../handlers/page-handler.js";
 
 const SETTINGS_ICON = '../icons/settings.svg';
 
@@ -8,7 +9,7 @@ const main = document.querySelector('main');
 
 //Create elements
 const div = document.createElement('div');
-const settingsBtn = document.createElement('img');
+const settingsButton = document.createElement('img');
 const statDiv = document.createElement('div');
 const statP = document.createElement('p');
 const character = document.createElement('p');
@@ -21,8 +22,8 @@ const correctButton = document.createElement('button');
 function buildHomePage() {
 
     //Add classes
-    div.classList.add('home-page');
-    settingsBtn.classList.add('settings-icon');
+    div.classList.add('normal-page');
+    settingsButton.classList.add('normal-icon');
     statDiv.classList.add('stat-div');
     character.classList.add('character');
     buttonsDiv.classList.add('buttons-div');
@@ -30,19 +31,20 @@ function buildHomePage() {
     missButton.classList.add('normal-button', 'smaller-button');
     correctButton.classList.add('normal-button', 'smaller-button');
 
-    settingsBtn.src = SETTINGS_ICON;
+    settingsButton.src = SETTINGS_ICON;
     statP.textContent = getPercentage(stack.lastIndex);
     showButton.textContent = 'Show';
     missButton.textContent = 'Missed';
     correctButton.textContent = 'Correct';
 
+    settingsButton.addEventListener('click', settingsPressed);
     showButton.addEventListener('click', showAnswer);
     missButton.addEventListener('click', missPressed);
     correctButton.addEventListener('click', correctPressed);
 
     statDiv.append(statP);
     buttonsDiv.append(showButton);
-    div.append(settingsBtn, statDiv, character, buttonsDiv);
+    div.append(settingsButton, statDiv, character, buttonsDiv);
     main.append(div);
 
     showCharacter();
@@ -50,6 +52,10 @@ function buildHomePage() {
 
 function showCharacter() {
     character.textContent = stack.characters[stack.lastIndex].japanese;
+}
+
+function settingsPressed() {
+    changePage(PAGE_STATE.SETTINGS);
 }
 
 function showAnswer() {
