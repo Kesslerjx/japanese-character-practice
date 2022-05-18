@@ -1,5 +1,6 @@
 import { changePage, PAGE_STATE } from "../handlers/page-handler.js";
 import { stack } from "../handlers/storage-handler.js";
+import { hiraganaOption } from "../handlers/stack-handler.js";
 
 const BACK_ICON = '../icons/back.svg';
 
@@ -30,6 +31,7 @@ function buildSettingsPage() {
     clearDataButton.textContent = 'Clear Data';
 
     backButton.addEventListener('click', backPressed);
+    hiraganaButton.addEventListener('click', hiraganaPressed);
 
     buttonsDiv.append(
         randomButton, 
@@ -53,6 +55,7 @@ function backPressed() {
 function hiraganaPressed() {
 
     //Handle stack modification
+    hiraganaOption();
 
     //Hightlight or unhighlight button
     highlightButtons();

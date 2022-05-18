@@ -23,8 +23,15 @@ function saveData() {
 }
 
 function populateData() {
-    //Create new stack
-    const initialStack = new Stack(characters);
+
+    //Use the characters file to create a new mutatable array
+    let newCharacters = characters;
+
+    //Go through each item and set the index value
+    newCharacters.forEach(setCharacterIndexes);
+
+    //Create new stack using the new character array
+    const initialStack = new Stack(newCharacters);
 
     //Save stack to local storage
     localStorage.setItem(STORAGE_KEY.STACK, JSON.stringify(initialStack));
@@ -34,6 +41,11 @@ function populateData() {
 
     console.log('Stack was created and characters were stored to it.');
 
+}
+
+//Sets their original index values to be used later
+function setCharacterIndexes(item, index) {
+    item.index = index;
 }
 
 export {loadData, saveData, stack};

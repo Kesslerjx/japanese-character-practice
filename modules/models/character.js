@@ -10,6 +10,7 @@ class Character {
         this.characterSet = characterSet;
         this.correctCount = 0;
         this.shownCount = 0;
+        this.index = 0; //To be used as a reference when reordering the array later
     }
 }
 
