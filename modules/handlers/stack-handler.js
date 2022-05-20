@@ -22,7 +22,6 @@ function missedAnswer() {
 }
 
 function correctAnswer() {
-    //Increase counts
     increaseCorrectCount(stack.lastIndex);
     increaseShownCount(stack.lastIndex);
     moveCurrentCharacter();
@@ -33,53 +32,35 @@ function correctAnswer() {
 //Is called when the hiragana option button is pressed
 function hiraganaOption() {
 
-    //Set to the opposite value
-    stack.options.hiragana = !stack.options.hiragana;
+    stack.options.hiragana = !stack.options.hiragana; //Set to opposite value
+    moveCharacters(stack.options.hiragana, CHARACTER_SET.HIRAGANA); //Move the characters
+    setIndex(); //Set the index
 
-    moveHiraganaCharacters();
 }
 
-function moveHiraganaCharacters() {
-    if(stack.options.hiragana) {
-        //Move characters from hidden to current
-        for(let index=0; index < stack.hiddenCharacters.length; index=index) {
-            //If it is a hiragana character, then move
-            if(stack.hiddenCharacters[index].characterSet === CHARACTER_SET.HIRAGANA) {
-                stack.characters.push(stack.characters[index]); //Add item to characters array
-                stack.hiddenCharacters.splice(index, 1); //Remove from the hidden characters array
-            } else {
-                index += 1;
-            }
-        }
-    } else {
-
-        //It only iterates the index value when a character hasn't been moved
-        //If a character has been moved, then the index should stay the same
-        //This is because the next item is being moved into its place
-        //If you iterate the for loop, it'll skip over every other item
-        for(let index=0; index < stack.characters.length; index=index) {
-            //If it is a hiragana character, then move
-            if(stack.characters[index].characterSet === CHARACTER_SET.HIRAGANA) {
-                stack.hiddenCharacters.push(stack.characters[index]); //Add item to hidden characters array
-                stack.characters.splice(index, 1); //Remove from the characters array
-            } else {
-                index += 1;
-            }
-        }
+//Moves the characters based on the option that is passed to it
+function moveCharacters(option, characterSet) {
+    console.log(stack);
+    //If option is false, then move the characters to hidden
+    if(option === false) {
+        //Add to hidden
+        stack.hiddenCharacters = stack.hiddenCharacters.concat(stack.characters.filter(character => (character.characterSet === characterSet)));
+        //Remove from characters
+        stack.characters = stack.characters.filter(character => (character.characterSet != characterSet));
+    } else { //If option is true, move to characters
+        //Add to characters
+        stack.characters = stack.characters.concat(stack.hiddenCharacters.filter(character => (character.characterSet === characterSet)));
+        //Remove from hidden
+        stack.hiddenCharacters = stack.hiddenCharacters.filter(character => (character.characterSet != characterSet));
     }
 
     console.log(stack);
-
-    //Set stack index to 0 so a character is loaded when the user goes back
-    stack.lastIndex = 0;
 }
 
+//Moves the character to the end of the array
 function moveCurrentCharacter() {
-   //Move character to shown array to move it out of the current stack
-   stack.shownCharacters.push(stack[stack.lastIndex]);
-
-   //Remove character from current stack
-   stack.characters.splice(stack.lastIndex, 1);
+    stack.characters.push(stack.characters[stack.lastIndex]);
+    stack.characters.splice(stack.lastIndex, 1);
 }
 
 function setIndex() {
