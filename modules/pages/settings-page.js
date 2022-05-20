@@ -1,6 +1,6 @@
 import { changePage, PAGE_STATE } from "../handlers/page-handler.js";
 import { stack } from "../handlers/storage-handler.js";
-import { hiraganaOption } from "../handlers/stack-handler.js";
+import { hiraganaOption, katakanaOption } from "../handlers/stack-handler.js";
 
 const BACK_ICON = '../icons/back.svg';
 
@@ -32,6 +32,7 @@ function buildSettingsPage() {
 
     backButton.addEventListener('click', backPressed);
     hiraganaButton.addEventListener('click', hiraganaPressed);
+    katakanaButton.addEventListener('click', katakanaPressed);
 
     buttonsDiv.append(
         randomButton, 
@@ -54,11 +55,28 @@ function backPressed() {
 
 function hiraganaPressed() {
 
-    //Handle stack modification
-    hiraganaOption();
+    //Only allow for hiragana characters to be removed if the katakana ones are present
+    if(stack.options.katakana === true) {
+        //Handle stack modification
+        hiraganaOption();
 
-    //Hightlight or unhighlight button
-    highlightButtons();
+        //Hightlight or unhighlight button
+        highlightButtons();
+    }
+
+}
+
+function katakanaPressed() {
+
+    //Only allow for hiragana characters to be removed if the katakana ones are present
+    if(stack.options.hiragana === true) {
+        //Handle stack modification
+        katakanaOption();
+
+        //Hightlight or unhighlight button
+        highlightButtons();
+    }
+
 }
 
 //Makes the buttons highlighted if that option is pressed

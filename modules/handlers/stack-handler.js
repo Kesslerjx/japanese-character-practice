@@ -38,6 +38,15 @@ function hiraganaOption() {
 
 }
 
+//Is called when the katakana option button is pressed
+function katakanaOption() {
+
+    stack.options.katakana = !stack.options.katakana; //Set to opposite value
+    moveCharacters(stack.options.katakana, CHARACTER_SET.KATAKANA); //Move the characters
+    setIndex(); //Set the index
+
+}
+
 //Moves the characters based on the option that is passed to it
 function moveCharacters(option, characterSet) {
     console.log(stack);
@@ -100,5 +109,6 @@ export {
     missedAnswer, 
     correctAnswer, 
     getPercentage,
-    hiraganaOption
+    hiraganaOption,
+    katakanaOption
 };
