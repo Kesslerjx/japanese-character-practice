@@ -22,7 +22,7 @@ async function loadBackground() {
     try {
         const allData = await getImageData(SEARCH_URL); //Get the results of the search
         const pageNumber = randomNumber(Math.floor(allData.total_results / PER_PAGE)); //Get a random page number from the results
-        const specificPage = await getImageData(`https://api.pexels.com/v1/search/?orientation=landscape&page=${pageNumber}&per_page=80&query=Japan`); //Get the specific page using the random number
+        const specificPage = await getImageData(`https://api.pexels.com/v1/search/?orientation=${getOrientation()}&page=${pageNumber}&per_page=80&query=Japan`); //Get the specific page using the random number
         const photoIndex = randomNumber(specificPage.photos.length); //Get a random number based on the number of photos in that page
         setBackground(specificPage.photos[photoIndex]); //Call the function to set the background based on the random page and index
     } catch {

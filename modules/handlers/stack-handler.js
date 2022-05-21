@@ -29,6 +29,11 @@ function correctAnswer() {
     saveData();
 }
 
+function randomOption() {
+    stack.options.random = !stack.options.random;
+    setIndex();
+}
+
 //Is called when the hiragana option button is pressed
 function hiraganaOption() {
 
@@ -110,5 +115,6 @@ export {
     correctAnswer, 
     getPercentage,
     hiraganaOption,
-    katakanaOption
+    katakanaOption,
+    randomOption
 };

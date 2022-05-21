@@ -1,6 +1,6 @@
 import { changePage, PAGE_STATE } from "../handlers/page-handler.js";
 import { stack } from "../handlers/storage-handler.js";
-import { hiraganaOption, katakanaOption } from "../handlers/stack-handler.js";
+import { hiraganaOption, katakanaOption, randomOption } from "../handlers/stack-handler.js";
 
 const BACK_ICON = '../icons/back.svg';
 
@@ -31,6 +31,7 @@ function buildSettingsPage() {
     clearDataButton.textContent = 'Clear Data';
 
     backButton.addEventListener('click', backPressed);
+    randomButton.addEventListener('click', randomPressed);
     hiraganaButton.addEventListener('click', hiraganaPressed);
     katakanaButton.addEventListener('click', katakanaPressed);
 
@@ -51,6 +52,11 @@ function buildSettingsPage() {
 
 function backPressed() {
     changePage(PAGE_STATE.HOME);
+}
+
+function randomPressed() {
+    randomOption();
+    highlightButtons();
 }
 
 function hiraganaPressed() {
