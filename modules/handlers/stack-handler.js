@@ -32,6 +32,7 @@ function correctAnswer() {
 function randomOption() {
     stack.options.random = !stack.options.random;
     setIndex();
+    saveData();
 }
 
 //Is called when the hiragana option button is pressed
@@ -40,6 +41,7 @@ function hiraganaOption() {
     stack.options.hiragana = !stack.options.hiragana; //Set to opposite value
     moveCharacters(stack.options.hiragana, CHARACTER_SET.HIRAGANA); //Move the characters
     setIndex(); //Set the index
+    saveData();
 
 }
 
@@ -49,6 +51,7 @@ function katakanaOption() {
     stack.options.katakana = !stack.options.katakana; //Set to opposite value
     moveCharacters(stack.options.katakana, CHARACTER_SET.KATAKANA); //Move the characters
     setIndex(); //Set the index
+    saveData();
 
 }
 
