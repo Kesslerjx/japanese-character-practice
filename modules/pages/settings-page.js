@@ -1,5 +1,5 @@
 import { changePage, PAGE_STATE } from "../handlers/page-handler.js";
-import { stack } from "../handlers/storage-handler.js";
+import { stack, clearData } from "../handlers/storage-handler.js";
 import { hiraganaOption, katakanaOption, randomOption } from "../handlers/stack-handler.js";
 
 const BACK_ICON = '../icons/back.svg';
@@ -34,6 +34,7 @@ function buildSettingsPage() {
     randomButton.addEventListener('click', randomPressed);
     hiraganaButton.addEventListener('click', hiraganaPressed);
     katakanaButton.addEventListener('click', katakanaPressed);
+    clearDataButton.addEventListener('click', clearDataPressed);
 
     buttonsDiv.append(
         randomButton, 
@@ -83,6 +84,15 @@ function katakanaPressed() {
         highlightButtons();
     }
 
+}
+
+function clearDataPressed() {
+    if(confirm("This will reset your progress. Are you sure?")) {
+        clearData();
+        highlightButtons();
+    } else {
+        console.log('User canceled data deletion');
+    }
 }
 
 //Makes the buttons highlighted if that option is pressed

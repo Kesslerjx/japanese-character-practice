@@ -43,9 +43,14 @@ function populateData() {
 
 }
 
+function clearData() {
+    window.localStorage.clear(); //Delete data
+    loadData(); //Reload data
+}
+
 //Sets their original index values to be used later
 function setCharacterIndexes(item, index) {
     item.index = index;
 }
 
-export {loadData, saveData, stack};
+export {loadData, saveData, clearData, stack};
