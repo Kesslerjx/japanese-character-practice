@@ -1,8 +1,9 @@
 import { stack } from "../handlers/storage-handler.js";
-import { getPercentage, missedAnswer, correctAnswer } from "../handlers/stack-handler.js";
+import { getPercentage, missedAnswer, correctAnswer, reorderStack } from "../handlers/stack-handler.js";
 import { PAGE_STATE, changePage } from "../handlers/page-handler.js";
 
 const SETTINGS_ICON = '../icons/settings.svg';
+const REORDER_ICON  = '../icons/reorder.svg';
 
 //Get main element
 const main = document.querySelector('main');
@@ -10,6 +11,8 @@ const hideButton = document.querySelector('#hide-button');
 
 //Create elements
 const div = document.createElement('div');
+const iconsDiv = document.createElement('div');
+const reorderButton = document.createElement('img');
 const settingsButton = document.createElement('img');
 const statDiv = document.createElement('div');
 const statP = document.createElement('p');
@@ -22,8 +25,13 @@ const correctButton = document.createElement('button');
 //Builds the home page and adds it to the main element
 function buildHomePage() {
 
+    //Get rid of missed and correct buttons if they're there
+    clearButtonsDiv();
+
     //Add classes
     div.classList.add('normal-page');
+    iconsDiv.classList.add('icons-div');
+    reorderButton.classList.add('normal-icon');
     settingsButton.classList.add('normal-icon');
     statDiv.classList.add('stat-div');
     character.classList.add('character');
@@ -33,21 +41,26 @@ function buildHomePage() {
     correctButton.classList.add('normal-button', 'smaller-button');
 
     settingsButton.src = SETTINGS_ICON;
+    settingsButton.title = 'Settings button';
+    reorderButton.src = REORDER_ICON;
+    reorderButton.title = 'Reorder stack button';
     statP.textContent = getPercentage(stack.lastIndex);
     showButton.textContent = 'Show';
     missButton.textContent = 'Missed';
     correctButton.textContent = 'Correct';
 
     settingsButton.addEventListener('click', settingsPressed);
+    reorderButton.addEventListener('click', reorderPressed);
     showButton.addEventListener('click', showAnswer);
     missButton.addEventListener('click', missPressed);
     correctButton.addEventListener('click', correctPressed);
     hideButton.addEventListener('mouseover', hoverOnHide);
     hideButton.addEventListener('mouseout', hoverOnHide);
 
+    iconsDiv.append(reorderButton, settingsButton);
     statDiv.append(statP);
     buttonsDiv.append(showButton);
-    div.append(settingsButton, statDiv, character, buttonsDiv);
+    div.append(iconsDiv, statDiv, character, buttonsDiv);
     main.append(div);
 
     showCharacter();
@@ -55,6 +68,10 @@ function buildHomePage() {
 
 function showCharacter() {
     character.textContent = stack.characters[stack.lastIndex].japanese;
+}
+
+function reorderPressed() {
+    reorderStack();
 }
 
 function settingsPressed() {

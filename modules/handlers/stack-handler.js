@@ -3,6 +3,11 @@ import { randomNumber } from './background-handler.js'
 import { CHARACTER_SET } from "../models/character.js";
 import { characters } from "../data/characters.js";
 
+function reorderStack() {
+
+    saveData();
+}
+
 function missedAnswer() {
     //Add to shown and correct count
     //But only if both are equal to at least 1
@@ -114,6 +119,7 @@ function increaseShownCount(index) {
 }
 
 export {
+    reorderStack,
     missedAnswer, 
     correctAnswer, 
     getPercentage,
