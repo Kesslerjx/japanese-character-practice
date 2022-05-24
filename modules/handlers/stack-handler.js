@@ -11,8 +11,9 @@ function reorderStack() {
 
     //Set the stack to the new array
     stack.characters = newArray;
+    
     setIndex();
-    //saveData();
+    saveData();
 }
 
 function missedAnswer() {

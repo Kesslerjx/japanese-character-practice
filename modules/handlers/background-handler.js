@@ -2,6 +2,7 @@ const API_KEY = '563492ad6f917000010000016e0a30354aa7440ca7d6d3432d6edee2';
 const SEARCH_TERM = 'Japan';
 const PER_PAGE = 80;
 const SEARCH_URL = `https://api.pexels.com/v1/search/?query=${SEARCH_TERM}&orientation=${getOrientation()}&per_page=${PER_PAGE}`;
+const DEFAULT_BACKGROUND = '../images/default-background.jpeg';
 
 //Sets the windows background image
 function setBackground(image) {
@@ -26,6 +27,7 @@ async function loadBackground() {
         const photoIndex = randomNumber(specificPage.photos.length); //Get a random number based on the number of photos in that page
         setBackground(specificPage.photos[photoIndex]); //Call the function to set the background based on the random page and index
     } catch {
+        document.querySelector('body').style.backgroundImage = `url(${DEFAULT_BACKGROUND})`;
         console.log('Could not retrieve the background image');
     }
 }
