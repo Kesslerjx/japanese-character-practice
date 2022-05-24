@@ -72,6 +72,7 @@ function showCharacter() {
 
 function reorderPressed() {
     reorderStack();
+    showCharacter();
 }
 
 function settingsPressed() {

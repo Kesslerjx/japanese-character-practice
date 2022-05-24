@@ -4,8 +4,15 @@ import { CHARACTER_SET } from "../models/character.js";
 import { characters } from "../data/characters.js";
 
 function reorderStack() {
+    //Use sort function and index values to reorder array
+    console.log('Reordering stack...');
+    const newArray = stack.characters.sort((a,b) => (a.index - b.index));
+    console.log('Reordering complete');
 
-    saveData();
+    //Set the stack to the new array
+    stack.characters = newArray;
+    setIndex();
+    //saveData();
 }
 
 function missedAnswer() {
