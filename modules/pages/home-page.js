@@ -54,8 +54,7 @@ function buildHomePage() {
     showButton.addEventListener('click', showAnswer);
     missButton.addEventListener('click', missPressed);
     correctButton.addEventListener('click', correctPressed);
-    hideButton.addEventListener('mouseover', hoverOnHide);
-    hideButton.addEventListener('mouseout', hoverOnHide);
+    hideButton.addEventListener('click', hideMain);
 
     iconsDiv.append(reorderButton, settingsButton);
     statDiv.append(statP);
@@ -105,7 +104,7 @@ function correctPressed() {
     buttonsDiv.append(showButton); //Adds the show button back
 }
 
-function hoverOnHide() {
+function hideMain() {
     if(main.style.opacity === '0') {
         main.style.opacity = '1'
     } else {
