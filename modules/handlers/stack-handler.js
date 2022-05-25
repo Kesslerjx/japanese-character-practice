@@ -103,10 +103,11 @@ function setIndex() {
 }
 
 function getPercentage(index) {
+    console.log(stack.characters[index]);
     if(stack.characters[index].shownCount == 0 || stack.characters[index].correctCount == 0) {
         return '0%';
     } else {
-        return `${(stack.characters[index].shownCount / stack.characters[index].correctCount) * 100}%`;
+        return `${(stack.characters[index].correctCount / stack.characters[index].shownCount).toFixed(2) * 100}%`;
     }
 }
 

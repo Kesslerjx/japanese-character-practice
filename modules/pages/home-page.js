@@ -44,7 +44,6 @@ function buildHomePage() {
     settingsButton.title = 'Settings button';
     reorderButton.src = REORDER_ICON;
     reorderButton.title = 'Reorder stack button';
-    statP.textContent = getPercentage(stack.lastIndex);
     showButton.textContent = 'Show';
     missButton.textContent = 'Missed';
     correctButton.textContent = 'Correct';
@@ -66,6 +65,7 @@ function buildHomePage() {
 }
 
 function showCharacter() {
+    statP.textContent = getPercentage(stack.lastIndex);
     character.textContent = stack.characters[stack.lastIndex].japanese;
 }
 
